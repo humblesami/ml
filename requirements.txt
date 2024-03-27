@@ -1,5 +1,6 @@
 IPython==8.22.2
+jupyter == 1.0.0
 pandas==2.2.1
 matplotlib==3.8.3
-scikit-learn==1.4.1
+scikit-learn==1.0.2
 tensorflow==2.16.1

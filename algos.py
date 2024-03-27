@@ -15,38 +15,38 @@ def plot_linear():
     x = [1, 2, 2.5, 3, 4]
     y = [1, 4, 7, 9, 15]
     plt.plot(x, y, 'ro')
-    plt.axis([0, 6, 0, 20])
+    plt.axis((0, 6, 0, 20))
 
     plt.plot(x, y, 'ro')
-    plt.axis([0, 6, 0, 20])
+    plt.axis((0, 6, 0, 20))
     plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)))
 
 
-dftrain = pd.read_csv('./datasets/titanic/train.csv') # training data
-dfeval = pd.read_csv('./datasets/titanic/eval.csv') # testing data
-y_train = dftrain.pop('survived')
-y_eval = dfeval.pop('survived')
+df_train = pd.read_csv('./datasets/titanic/train.csv') # training data
+df_eval = pd.read_csv('./datasets/titanic/eval.csv') # testing data
+y_train = df_train.pop('survived')
+y_eval = df_eval.pop('survived')
 
-print(dftrain.head())
-print(dftrain.describe())
-print(dftrain.shape)
+print(df_train.head())
+print(df_train.describe())
+print(df_train.shape)
 print(y_train.head())
 
 
 def plot_age():
-    dftrain.age.hist(bins=20)
+    df_train.age.hist(bins=20)
 
 
 def plot_sex():
-    dftrain.sex.value_counts().plot(kind='barh')
+    df_train.sex.value_counts().plot(kind='barh')
 
 
 def plot_counts():
-    dftrain['class'].value_counts().plot(kind='barh')
+    df_train['class'].value_counts().plot(kind='barh')
 
 
 def plot_survived():
-    pd.concat([dftrain, y_train], axis=1).groupby('sex').survived.mean().plot(kind='barh').set_xlabel('% survive')
+    pd.concat([df_train, y_train], axis=1).groupby('sex').survived.mean().plot(kind='barh').set_xlabel('% survive')
 
 
 plot_survived()
